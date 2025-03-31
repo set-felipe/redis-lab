@@ -29,9 +29,9 @@ node-2	  7002	       17002
 node-3	  7003	       17003
 
 
-----Conferir os arquivos .conf para mudar os parâmetros com o seu IP---------
+##Conferir os arquivos .conf para mudar os parâmetros com o seu IP
 
-----SCRIPTS-----
+##SCRIPTS
 1.lab-sentinel.py:
 Conexão básica usando sentinel para identificar master/slave
 2.conexao-standalone:
