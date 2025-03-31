@@ -34,17 +34,24 @@ node-3	  7003	       17003
 ## SCRIPTS
 1.lab-sentinel.py:
 Conexão básica usando sentinel para identificar master/slave
+##
 2.conexao-standalone:
 Conexão simples em um nó
+##
 3.lab-buffer-hash.py:
 Simula clientes fazendo um hgetall no redis
+##
 4.lab-cluster.py
 Conexão simples feita com o redis no modo cluster
+##
 5.lab-buffer-lrange.py
 Simula clientes fazendos lrange no redis
+##
 6.lab-buffer-str.py
 Simula clientes fazendo um get no redis
+##
 7.lab-buffer-lpush
 Simula clientes fazendo um lpush em uma lista
+##
 8.criar_listra_monstra.py
 Cria uma lista no redis para fazer o lab lrange e lpush
