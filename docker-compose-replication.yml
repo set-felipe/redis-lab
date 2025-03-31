@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  redis-master:
+    image: redis:7-alpine
+    container_name: redis-master
+    network_mode: host
+    command: redis-server --port 6380 --bind 0.0.0.0 --protected-mode no
+
+  redis-slave:
+    image: redis:7-alpine
+    container_name: redis-slave
+    network_mode: host
+    depends_on:
+      - redis-master
+    command: redis-server --port 6381 --bind 0.0.0.0 --protected-mode no --replicaof 127.0.0.1 6380
+
+  sentinel:
+    image: redis:7-alpine
+    container_name: redis-sentinel
+    network_mode: host
+    depends_on:
+      - redis-master
+      - redis-slave
+    volumes:
+      - ./sentinel.conf:/etc/sentinel/sentinel.conf
+    command: redis-sentinel /etc/sentinel/sentinel.conf

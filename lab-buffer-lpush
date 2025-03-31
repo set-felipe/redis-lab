@@ -1,0 +1,44 @@
+import redis
+import threading
+import time
+
+
+
+contador_lpush = 0
+lock = threading.Lock()
+
+
+def cliente_escritor(id_cliente):
+    global contador_lpush
+    r = redis.Redis(host='localhost', port=6060, decode_responses=True)
+    chave = 'lista_monstra'
+    
+    while True:
+        r.lpush(chave, "valor_cliente_2_1742778782.5809376")
+        with lock:
+            contador_lpush += 1
+
+# Monitor de RPS e memória Redis
+def monitor():
+    global contador_lpush
+    r = redis.Redis(host='localhost', port=6060, decode_responses=True)
+    
+    while True:
+        time.sleep(1)
+        with lock:
+            rps = contador_lpush
+            contador_lpush = 0
+        memoria = r.info('memory')['used_memory_human']
+        print(f"LPUSH RPS: {rps} | Memória usada: {memoria}")
+
+# Inicia monitor
+threading.Thread(target=monitor, daemon=True).start()
+
+# Inicia clientes escritores (ex: 3 clientes fazendo LPUSH)
+for i in range(3):
+    threading.Thread(target=cliente_escritor, args=(i,)).start()
+    
+
+# Mantém o script vivo
+while True:
+    time.sleep(1)
