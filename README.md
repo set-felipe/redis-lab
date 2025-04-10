@@ -2,8 +2,11 @@
 ## 📦 Como instalar
 ## python
 1- Instalar o python para rodar os scripts
+
 2 - Criar o ambiente virtual python -m nome_do_ambiente (para ativar use ./Scripts/activate no cmd)
+
 3- Instale as bibliotecas do arquivo requirements usando: pip install -r requirements.txt
+
 4- Altere o ip/porta dos scripts para o ip da sua vm/wsl
 ## docker-compose-replication
 
