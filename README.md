@@ -11,18 +11,28 @@
 ## docker-compose-replication
 
 1- Instale o docker em um ambiente linux ou no wsl
+
 1.2- inicie o serviço do docker sudo service docker start
+
 2- Coloque o arquivo do sentinel.conf na mesma pasta do docker compose
+
 3- Rode o comando docker-compose up -d
+
 4- Use o comando ip addr para descobrir o ip da vm/wsl para poder se conectar ao redis de forma externa
+
 5- Para acessar o container use : docker exec -it redis-master redis-cli -p 6380
 ## docer-compose-cluster
 
 1- instale o docker em um ambiente linux ou no wsl
+
 2- Copie os arquivos do docker-compose-cluster.yml e node1.conf,node2.conf,node3.conf para sua vm ou wsl
+
 3-Substitua o IP pelo IP do WSL / VM
+
 4- rode o comando docker-compose -f docker-compose-cluster.yml up -d
+
 5- Crie o cluster com: docker run -it --rm --network host redis:7-alpine redis-cli --cluster create  
+
 6- Acesse pelo ip da VM ou WSL 
 
 portas:
